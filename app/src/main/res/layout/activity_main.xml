@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.grishberg.servicetest.presentation.ui.activity.MainActivity">
+
+    <TextView
+        android:id="@+id/main_screen_time_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:textAlignment="center"
+        android:layout_margin="@dimen/main_screen_textview_margin"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_screen_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_screen_viewpager"
+        android:background="@android:color/holo_green_dark"/>
+
+    <Button
+        android:id="@+id/main_screen_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_second_screen_button_title"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/main_screen_button_margin"/>
+</LinearLayout>
