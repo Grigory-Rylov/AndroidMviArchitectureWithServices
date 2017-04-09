@@ -17,6 +17,8 @@ import com.grishberg.servicetest.presentation.presenters.MainScreenPresenter;
 import com.grishberg.servicetest.presentation.states.main.MainScreenViewState;
 import com.grishberg.servicetest.presentation.ui.adapters.MainScreenPageAdapter;
 
+import java.util.List;
+
 public class MainActivity extends BaseMvpActivity<MainScreenPresenter> {
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -24,6 +26,11 @@ public class MainActivity extends BaseMvpActivity<MainScreenPresenter> {
 
     public static void start(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
+    }
+
+    @Override
+    public Object onRetainCustomNonConfigurationInstance() {
+        return super.onRetainCustomNonConfigurationInstance();
     }
 
     @Override

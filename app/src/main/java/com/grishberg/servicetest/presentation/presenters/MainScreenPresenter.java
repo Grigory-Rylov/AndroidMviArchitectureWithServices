@@ -37,5 +37,8 @@ public class MainScreenPresenter extends BaseMvpPresenter<MainScreenViewState> {
 
     }
 
-
+    @Override
+    public void onDestroy() {
+        interactor.onMainScreenClosed();
+    }
 }

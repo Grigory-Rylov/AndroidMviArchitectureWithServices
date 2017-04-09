@@ -46,4 +46,8 @@ public class MainScreenInteractor {
             mainScreenPresenter.updateState(new MainScreenPresenterState.TimeSelected(hour, minutes));
         }
     }
+
+    public void onMainScreenClosed() {
+        serviceProvider.stopService();
+    }
 }

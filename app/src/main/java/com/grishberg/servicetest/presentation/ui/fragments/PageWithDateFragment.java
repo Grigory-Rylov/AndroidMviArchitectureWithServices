@@ -1,9 +1,11 @@
 package com.grishberg.servicetest.presentation.ui.fragments;
 
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ import com.grishberg.servicetest.presentation.states.main.PageWithDateViewState;
 public class PageWithDateFragment extends BaseMvpFragment<PageWithDatePresenter> {
 
     public static final String TIME_PICKER_TAG = "TimePicker";
+    private static final String TAG = PageWithDateFragment.class.getSimpleName();
 
     public static Fragment newInstance() {
         return new PageWithDateFragment();
@@ -32,6 +35,18 @@ public class PageWithDateFragment extends BaseMvpFragment<PageWithDatePresenter>
     @Override
     protected PageWithDatePresenter createPresenter() {
         return new PageWithDatePresenter(MyServiceLocator.provideMainScreenInteractor());
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.d(TAG, "onAttach: ");
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate: ");
     }
 
     @Nullable
