@@ -1,7 +1,7 @@
 package com.grishberg.servicetest.presentation.presenters;
 
-import com.grishberg.mvpstatelibrary.framework.presenter.BaseMvpPresenter;
-import com.grishberg.mvpstatelibrary.framework.state.MvpState;
+import com.github.mvpstatelib.framework.presenter.BaseMvpPresenter;
+import com.github.mvpstatelib.framework.state.MvpState;
 import com.grishberg.servicetest.domain.interactors.MainScreenInteractor;
 import com.grishberg.servicetest.presentation.states.main.MainScreenPresenterState;
 import com.grishberg.servicetest.presentation.states.main.MainScreenViewState;
@@ -11,7 +11,7 @@ import com.grishberg.servicetest.presentation.states.main.MainScreenViewState.*;
  * Created by grishberg on 01.04.17.
  */
 
-public class MainScreenPresenter extends BaseMvpPresenter<MainScreenViewState> {
+public class MainScreenPresenter extends BaseMvpPresenter {
 
     private final MainScreenInteractor interactor;
 

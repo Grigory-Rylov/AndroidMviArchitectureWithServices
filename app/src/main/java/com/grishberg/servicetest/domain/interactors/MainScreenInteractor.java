@@ -3,8 +3,8 @@ package com.grishberg.servicetest.domain.interactors;
 import android.app.Service;
 import android.support.annotation.Nullable;
 
-import com.grishberg.mvpstatelibrary.framework.state.MvpState;
-import com.grishberg.mvpstatelibrary.framework.state.StateReceiver;
+import com.github.mvpstatelib.framework.state.MvpState;
+import com.github.mvpstatelib.framework.state.StateReceiver;
 import com.grishberg.servicetest.common.Logger;
 import com.grishberg.servicetest.data.service.BoundServiceProvider;
 import com.grishberg.servicetest.presentation.states.main.MainScreenPresenterState;

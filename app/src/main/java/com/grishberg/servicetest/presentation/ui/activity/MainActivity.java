@@ -8,8 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.grishberg.mvpstatelibrary.framework.state.MvpState;
-import com.grishberg.mvpstatelibrary.framework.ui.BaseMvpActivity;
+import com.github.mvpstatelib.framework.state.MvpState;
+import com.github.mvpstatelib.framework.ui.BaseMvpActivity;
+import com.github.mvpstatelib.state.annotations.SubscribeState;
 import com.grishberg.servicetest.R;
 import com.grishberg.servicetest.common.di.MyServiceLocator;
 import com.grishberg.servicetest.domain.interactors.MainScreenInteractor;
@@ -26,11 +27,6 @@ public class MainActivity extends BaseMvpActivity<MainScreenPresenter> {
 
     public static void start(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
-    }
-
-    @Override
-    public Object onRetainCustomNonConfigurationInstance() {
-        return super.onRetainCustomNonConfigurationInstance();
     }
 
     @Override
@@ -61,16 +57,15 @@ public class MainActivity extends BaseMvpActivity<MainScreenPresenter> {
     }
 
     @Override
-    public void onModelUpdated(MvpState model) {
-        if (model instanceof MainScreenViewState.TimeSelectedResponse) {
-            updateTime((MainScreenViewState.TimeSelectedResponse) model);
-        }
-        Log.d(TAG, "onModelUpdated: " + model);
+    public void onStateUpdated(MvpState state) {
+        GeneratedMainActivitySubscriber.processState(this, state);
+        Log.d(TAG, "onModelUpdated: " + state);
     }
 
-    private void updateTime(MainScreenViewState.TimeSelectedResponse model) {
+    @SubscribeState
+    void updateTime(MainScreenViewState.TimeSelectedResponse state) {
         timeText.setText(String.format(getString(R.string.main_screen_time_format),
-                model.getHour(), model.getMinutes()
+                state.getHour(), state.getMinutes()
         ));
     }
 }

@@ -1,6 +1,6 @@
 package com.grishberg.servicetest.presentation.states.main;
 
-import com.grishberg.mvpstatelibrary.framework.state.MvpState;
+import com.github.mvpstatelib.framework.state.AbsMvpState;
 
 import lombok.Getter;
 
@@ -8,7 +8,7 @@ import lombok.Getter;
  * Created by grishberg on 01.04.17.
  */
 
-public class MainScreenPresenterState implements MvpState {
+public class MainScreenPresenterState extends AbsMvpState {
     public static class Request {
     }
 
