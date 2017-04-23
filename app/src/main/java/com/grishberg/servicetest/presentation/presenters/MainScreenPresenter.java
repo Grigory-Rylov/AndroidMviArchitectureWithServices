@@ -2,6 +2,7 @@ package com.grishberg.servicetest.presentation.presenters;
 
 import com.github.mvpstatelib.framework.presenter.BaseMvpPresenter;
 import com.github.mvpstatelib.framework.state.MvpState;
+import com.github.mvpstatelib.state.annotations.SubscribeState;
 import com.grishberg.servicetest.domain.interactors.MainScreenInteractor;
 import com.grishberg.servicetest.presentation.states.main.MainScreenPresenterState;
 import com.grishberg.servicetest.presentation.states.main.MainScreenViewState;
@@ -29,11 +30,13 @@ public class MainScreenPresenter extends BaseMvpPresenter {
         }
     }
 
-    private void processTimeSelected(MainScreenPresenterState.TimeSelected state) {
+    @SubscribeState
+    void processTimeSelected(MainScreenPresenterState.TimeSelected state) {
         updateViewState(new TimeSelectedResponse(state.getHour(), state.getMinutes()));
     }
 
-    private void processRequest(MainScreenPresenterState.Request request) {
+    @SubscribeState
+    void processRequest(MainScreenPresenterState.Request request) {
 
     }
 

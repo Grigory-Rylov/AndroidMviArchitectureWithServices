@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.grishberg.mvpstatelibrary.framework.state.MvpState;
-import com.grishberg.mvpstatelibrary.framework.ui.BaseMvpFragment;
+import com.github.mvpstatelib.framework.state.MvpState;
+import com.github.mvpstatelib.framework.ui.BaseMvpFragment;
 import com.grishberg.servicetest.R;
 import com.grishberg.servicetest.common.di.MyServiceLocator;
 import com.grishberg.servicetest.domain.interactors.MainScreenInteractor;
@@ -58,7 +58,7 @@ public class PagerFragment extends BaseMvpFragment<PagePresenter> {
     }
 
     @Override
-    public void onModelUpdated(MvpState model) {
+    public void onStateUpdated(MvpState model) {
 
     }
 }

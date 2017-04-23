@@ -1,7 +1,8 @@
 package com.grishberg.servicetest.presentation.presenters;
 
-import com.grishberg.mvpstatelibrary.framework.presenter.BaseMvpPresenter;
-import com.grishberg.mvpstatelibrary.framework.state.MvpState;
+import com.github.mvpstatelib.framework.presenter.BaseMvpPresenter;
+import com.github.mvpstatelib.framework.state.MvpState;
+import com.github.mvpstatelib.state.annotations.SubscribeState;
 import com.grishberg.servicetest.domain.interactors.MainScreenInteractor;
 import com.grishberg.servicetest.presentation.states.main.PageWithTimePresenterState;
 import com.grishberg.servicetest.presentation.states.main.PageWithDateViewState;
@@ -10,7 +11,7 @@ import com.grishberg.servicetest.presentation.states.main.PageWithDateViewState;
  * Created by grishberg on 01.04.17.
  */
 
-public class PageWithDatePresenter extends BaseMvpPresenter<PageWithDateViewState> {
+public class PageWithDatePresenter extends BaseMvpPresenter {
 
     private final MainScreenInteractor interactor;
 
@@ -20,14 +21,16 @@ public class PageWithDatePresenter extends BaseMvpPresenter<PageWithDateViewStat
 
     @Override
     protected void onStateUpdated(MvpState state) {
-        if (state instanceof PageWithTimePresenterState.SelectTimeButtonClicked) {
-            updateViewState(new PageWithDateViewState.ShowDateDialog());
-        } else if (state instanceof PageWithTimePresenterState.TimeSelected) {
-            onTimeSelected((PageWithTimePresenterState.TimeSelected) state);
-        }
+        GeneratedPageWithDatePresenterSubscriber.processState(this, state);
     }
 
-    private void onTimeSelected(PageWithTimePresenterState.TimeSelected state) {
+    @SubscribeState
+    void onShowDialog(PageWithDateViewState.ShowDateDialog state){
+        updateViewState(new PageWithDateViewState.ShowDateDialog());
+    }
+
+    @SubscribeState
+    void onTimeSelected(PageWithTimePresenterState.TimeSelected state) {
         interactor.onTimeSelected(state.getHour(), state.getMinutes());
         updateViewState(null);
     }

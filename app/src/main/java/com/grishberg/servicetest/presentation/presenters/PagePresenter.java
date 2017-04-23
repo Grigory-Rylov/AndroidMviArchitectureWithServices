@@ -3,7 +3,6 @@ package com.grishberg.servicetest.presentation.presenters;
 import com.github.mvpstatelib.framework.presenter.BaseMvpPresenter;
 import com.github.mvpstatelib.framework.state.MvpState;
 import com.grishberg.servicetest.domain.interactors.MainScreenInteractor;
-import com.grishberg.servicetest.presentation.states.main.PageViewState;
 
 /**
  * Created by grishberg on 01.04.17.

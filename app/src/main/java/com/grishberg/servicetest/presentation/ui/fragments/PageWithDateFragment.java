@@ -11,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TimePicker;
 
-import com.grishberg.mvpstatelibrary.framework.state.MvpState;
-import com.grishberg.mvpstatelibrary.framework.ui.BaseMvpFragment;
+import com.github.mvpstatelib.framework.state.MvpState;
+import com.github.mvpstatelib.framework.ui.BaseMvpFragment;
+import com.github.mvpstatelib.state.annotations.SubscribeState;
 import com.grishberg.servicetest.R;
 import com.grishberg.servicetest.common.di.MyServiceLocator;
+import com.grishberg.servicetest.presentation.presenters.GeneratedPageWithDatePresenterSubscriber;
 import com.grishberg.servicetest.presentation.presenters.PageWithDatePresenter;
 import com.grishberg.servicetest.presentation.states.main.PageWithTimePresenterState;
 import com.grishberg.servicetest.presentation.states.main.PageWithDateViewState;
@@ -64,13 +66,12 @@ public class PageWithDateFragment extends BaseMvpFragment<PageWithDatePresenter>
     }
 
     @Override
-    public void onModelUpdated(MvpState model) {
-        if (model instanceof PageWithDateViewState.ShowDateDialog) {
-            showDateDialog();
-        }
+    public void onStateUpdated(MvpState state) {
+        GeneratedPageWithDateFragmentSubscriber.processState(this, state);
     }
 
-    private void showDateDialog() {
+    @SubscribeState
+    void showDateDialog(PageWithDateViewState.ShowDateDialog state) {
         TimePickerDialogFragment fragment = (TimePickerDialogFragment) getFragmentManager().findFragmentByTag("TimePicker");
         if (fragment == null) {
             fragment = new TimePickerDialogFragment();
